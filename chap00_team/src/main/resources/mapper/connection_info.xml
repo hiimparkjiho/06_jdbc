@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="selectAllUsers">
+        SELECT
+            user_code,
+            user_name,
+            user_tier
+        FROM tbl_all_users
+    </entry>
+    
+    <entry key="selectMasterUsers">
+        SELECT
+            AU.user_name,
+            AU.user_tier,
+            C.champion_name,
+            M.total_games,
+            M.winning_rate
+        FROM tbl_all_users AS AU
+        JOIN tbl_master_users AS M ON AU.user_code = M.user_code
+        JOIN tbl_champions AS C ON M.champion_code = C.champion_code;
+    </entry>
+</properties>
