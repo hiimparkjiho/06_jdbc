@@ -42,4 +42,10 @@ public class MenuService {
 
         return result;
     }
+
+    public int deleteMenu(MenuDTO menuDTO){
+        Connection con = getConnection();
+        int result = menuDAO.deleteMenu(con, menuDTO);
+        return result;
+    }
 }

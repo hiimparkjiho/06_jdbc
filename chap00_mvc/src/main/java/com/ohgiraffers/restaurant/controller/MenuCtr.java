@@ -63,8 +63,15 @@ public class MenuCtr {
 
     }
 
-    public int deleteMenu(int code){
-        System.out.println("delete code: " + code);
-        return 0;
+    public String deleteMenu(MenuDTO menuDTO){
+
+       if(menuDTO.getMenuName().equals("")){
+          return "삭제할 메뉴의 이름을 입력해주세요";
+       }
+        int result = menuService.deleteMenu(menuDTO);
+        if(result < 0){
+            return "삭제되지 않았습니다.";
+        }
+        return "삭제 완료";
     }
 }

@@ -89,4 +89,18 @@ public class MenuDAO { // data access object
         return result;
     }
 
+    public int deleteMenu(Connection con, MenuDTO menuDTO){
+        PreparedStatement pstmt = null;
+        ResultSet rset = null;
+        int result = 0;
+        try {
+            pstmt = con.prepareStatement(prop.getProperty("deleteMenu"));
+            pstmt.setString(1, menuDTO.getMenuName());
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
 }

@@ -38,7 +38,8 @@ public class MenuView {
                     System.out.println(menuctr.registMenu(registMenu())); break;
 
                 //2-4 : 메뉴 삭제
-                case 4 : break;
+                case 4 :
+                    System.out.println(menuctr.deleteMenu(deleteMenu())); break;
 
                 // default : 프로그램 종료
                 default:break 프로그램;
@@ -81,4 +82,15 @@ public class MenuView {
         // 일반적으로 front에서 js를 이용하여 1차 유효성 검사를 진행한다.
         return newMenu;
     }
+
+    public static MenuDTO deleteMenu(){
+        MenuDTO menuDTO = new MenuDTO();
+        Scanner scan = new Scanner(System.in);
+        System.out.println("삭제할 메뉴의 이름을 입력해주세요");
+        menuDTO.setMenuName(scan.nextLine());
+
+        return menuDTO;
+    }
+
+
 }
