@@ -48,4 +48,10 @@ public class MenuService {
         int result = menuDAO.deleteMenu(con, menuDTO);
         return result;
     }
+
+    public int updateMenu(MenuDTO menuDTO, String updateMenuName) {
+        Connection con = getConnection();
+        int result = menuDAO.updateMenu(con, menuDTO, updateMenuName);
+        return result;
+    }
 }

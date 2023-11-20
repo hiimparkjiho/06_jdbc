@@ -103,4 +103,22 @@ public class MenuDAO { // data access object
         return result;
     }
 
+    public int updateMenu(Connection con, MenuDTO menuDTO, String updateMenuName) {
+        PreparedStatement pstmt = null;
+        int result = 0;
+        try {
+            pstmt = con.prepareStatement(prop.getProperty("updateUser"));
+            pstmt.setString(1, menuDTO.getMenuName());
+            pstmt.setInt(2, menuDTO.getPrice());
+            pstmt.setString(3, menuDTO.getCategory());
+            pstmt.setString(4, menuDTO.getStatus());
+            pstmt.setString(5, updateMenuName);
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            close(pstmt);
+        }
+        return result;
+    }
 }

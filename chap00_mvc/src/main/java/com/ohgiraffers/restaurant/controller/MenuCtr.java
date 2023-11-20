@@ -74,4 +74,28 @@ public class MenuCtr {
         }
         return "삭제 완료";
     }
+
+    public String updateMenu(MenuDTO menuDTO, String updateMenuName){
+        if(Objects.isNull(menuDTO)){
+            System.out.println("메뉴가 없네요");
+            return "메뉴 정보가 존재하지 않습니다";
+        }
+        if(menuDTO.getMenuName() == null || menuDTO.getMenuName().equals("")){
+            return "메뉴 이름을 등록해주세요.";
+        }
+        if(menuDTO.getPrice() <= 0){
+            return "메뉴 가격은 음수일 수 없습니다.";
+        }
+        if(menuDTO.getCategory() == null || menuDTO.getCategory().equals("")){
+            return "카테고리는 필수입니다.";
+        }
+        if(menuDTO.getStatus() == null || menuDTO.getStatus().equals("")){
+            return "판매여부 등록은 필수입니다";
+        }
+        int result = menuService.updateMenu(menuDTO, updateMenuName);
+        if(result < 0){
+            return "수정 실패";
+        }
+        return "수정 완료";
+    }
 }

@@ -31,7 +31,8 @@ public class MenuView {
                 case 1 : viewMenu(menuctr.findAllMenu()); break;
 
                 // 2-2 : 메뉴 수정
-                case 2 : break;
+                case 2 :
+                    System.out.println(menuctr.updateMenu(updateMenuView(), targetMenu())); break;
 
                 // 2-3 : 메뉴 등록
                 case 3 :
@@ -88,6 +89,36 @@ public class MenuView {
         Scanner scan = new Scanner(System.in);
         System.out.println("삭제할 메뉴의 이름을 입력해주세요");
         menuDTO.setMenuName(scan.nextLine());
+
+        return menuDTO;
+    }
+
+
+    public static String targetMenu(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("====================================");
+        System.out.println("변경하고자 하는 메뉴를 입력하세요.");
+        String target = scanner.next();
+        return target;
+    }
+
+
+    public static MenuDTO updateMenuView(){
+        MenuDTO menuDTO = new MenuDTO();
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("==========================");
+        System.out.println();
+        System.out.println("변경할 메뉴 이름을 입력해주세요: ");
+        menuDTO.setMenuName(scan.nextLine());
+        System.out.println("가격을 입력해주세요: ");
+        menuDTO.setPrice(scan.nextInt());
+        scan.nextLine();
+        System.out.println("카테고리 코드를 입력해주세요: ");
+        menuDTO.setCategory(scan.nextLine());
+        System.out.println("판매 여부를 입력해주세요: ");
+        menuDTO.setStatus(scan.nextLine());
+
 
         return menuDTO;
     }
