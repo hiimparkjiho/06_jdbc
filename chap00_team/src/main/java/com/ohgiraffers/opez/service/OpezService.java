@@ -20,4 +20,16 @@ public class OpezService {
         close(con);
         return userList;
     }
+
+    public int deleteUser(AllUsersDTO allUsersDTO){
+        Connection con = getConnection();
+        int result = opezDAO.userDelete(con, allUsersDTO);
+        return result;
+    }
+
+    public int updateUser(AllUsersDTO allUsersDTO) {
+        Connection con = getConnection();
+        int result = opezDAO.userUpdate(con, allUsersDTO);
+        return result;
+    }
 }
